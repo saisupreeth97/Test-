@@ -1,100 +1,99 @@
 import { motion } from 'framer-motion'
 
-const categories = [
-  {
-    title: 'Backend',
-    icon: '⚡',
-    color: 'violet',
-    skills: ['Java', 'Spring Boot', 'Spring Cloud', 'Spring MVC', 'Microservices', 'Python', 'Flask', 'Node.js', 'Express.js', 'Zuul API Gateway', 'Eureka', 'Hystrix'],
-  },
-  {
-    title: 'Frontend',
-    icon: '🎨',
-    color: 'cyan',
-    skills: ['Angular', 'TypeScript', 'React', 'HTML5', 'CSS3'],
-  },
-  {
-    title: 'Cloud & DevOps',
-    icon: '☁️',
-    color: 'blue',
-    skills: ['AWS', 'Kubernetes', 'Docker', 'Jenkins', 'Git', 'Bitbucket', 'Agile / Scrum', 'Jira', 'Splunk'],
-  },
-  {
-    title: 'Databases & Big Data',
-    icon: '🗄️',
-    color: 'emerald',
-    skills: ['Cassandra', 'Apache Spark', 'SQL', 'NoSQL'],
-  },
-  {
-    title: 'Testing',
-    icon: '🧪',
-    color: 'orange',
-    skills: ['JUnit', 'Mockito', 'Cypress', 'Protractor', 'TDD'],
-  },
-  {
-    title: 'Other',
-    icon: '🛠️',
-    color: 'pink',
-    skills: ['REST APIs', 'GraphQL', 'Factory Design Pattern', 'CCPA Compliance', 'MiniKube', 'Product Management'],
-  },
+const featured = [
+  { name: 'Java', icon: '☕', color: 'from-orange-500/20 to-red-500/20 border-orange-500/30' },
+  { name: 'Spring Boot', icon: '🌿', color: 'from-emerald-500/20 to-green-500/20 border-emerald-500/30' },
+  { name: 'Python', icon: '🐍', color: 'from-blue-500/20 to-yellow-500/20 border-blue-500/30' },
+  { name: 'Node.js', icon: '⬢', color: 'from-green-500/20 to-emerald-500/20 border-green-500/30' },
+  { name: 'AWS', icon: '☁️', color: 'from-orange-500/20 to-amber-500/20 border-orange-500/30' },
+  { name: 'Kubernetes', icon: '⎈', color: 'from-blue-500/20 to-indigo-500/20 border-blue-500/30' },
+  { name: 'Angular', icon: '🅰️', color: 'from-red-500/20 to-rose-500/20 border-red-500/30' },
+  { name: 'TypeScript', icon: '𝐓𝐒', color: 'from-blue-500/20 to-sky-500/20 border-blue-500/30' },
+  { name: 'Apache Spark', icon: '✨', color: 'from-orange-500/20 to-yellow-500/20 border-orange-500/30' },
+  { name: 'Cassandra', icon: '🗄️', color: 'from-cyan-500/20 to-teal-500/20 border-cyan-500/30' },
+  { name: 'Microservices', icon: '🧩', color: 'from-violet-500/20 to-purple-500/20 border-violet-500/30' },
+  { name: 'REST APIs', icon: '🔌', color: 'from-pink-500/20 to-rose-500/20 border-pink-500/30' },
 ]
 
-const colorMap = {
-  violet:  { card: 'border-violet-500/20 bg-violet-500/5',  icon: 'bg-violet-500/15 text-violet-400', skill: 'bg-violet-500/10 text-violet-300 border-violet-500/20', title: 'text-violet-400' },
-  cyan:    { card: 'border-cyan-500/20 bg-cyan-500/5',      icon: 'bg-cyan-500/15 text-cyan-400',     skill: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',       title: 'text-cyan-400'   },
-  blue:    { card: 'border-blue-500/20 bg-blue-500/5',      icon: 'bg-blue-500/15 text-blue-400',     skill: 'bg-blue-500/10 text-blue-300 border-blue-500/20',       title: 'text-blue-400'   },
-  emerald: { card: 'border-emerald-500/20 bg-emerald-500/5',icon: 'bg-emerald-500/15 text-emerald-400',skill:'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',title:'text-emerald-400'},
-  orange:  { card: 'border-orange-500/20 bg-orange-500/5',  icon: 'bg-orange-500/15 text-orange-400', skill: 'bg-orange-500/10 text-orange-300 border-orange-500/20', title: 'text-orange-400' },
-  pink:    { card: 'border-pink-500/20 bg-pink-500/5',      icon: 'bg-pink-500/15 text-pink-400',     skill: 'bg-pink-500/10 text-pink-300 border-pink-500/20',       title: 'text-pink-400'   },
+const row1 = ['Java', 'Spring Boot', 'Spring Cloud', 'Microservices', 'Spring MVC', 'Zuul API Gateway', 'Eureka', 'Hystrix', 'Factory Pattern', 'REST APIs', 'GraphQL']
+const row2 = ['Python', 'Flask', 'Node.js', 'Express.js', 'Angular', 'React', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind']
+const row3 = ['AWS', 'Kubernetes', 'Docker', 'MiniKube', 'Jenkins', 'Git', 'Bitbucket', 'Jira', 'Splunk', 'Agile', 'CI/CD']
+const row4 = ['Cassandra', 'Apache Spark', 'SQL', 'NoSQL', 'JUnit', 'Mockito', 'Cypress', 'Protractor', 'TDD', 'CCPA Compliance']
+
+function Marquee({ items, reverse = false, dur = '60s' }) {
+  const doubled = [...items, ...items]
+  return (
+    <div className="relative overflow-hidden mask-fade">
+      <div
+        className={`flex gap-3 whitespace-nowrap will-change-transform ${reverse ? 'marquee-rev' : 'marquee'}`}
+        style={{ '--dur': dur, width: 'max-content' }}
+      >
+        {doubled.map((s, i) => (
+          <span
+            key={i}
+            className="px-5 py-2.5 rounded-full text-sm font-medium border border-white/10 bg-white/[0.03] text-slate-300 backdrop-blur-sm hover:border-violet-500/40 hover:text-white transition-colors"
+          >
+            {s}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28 bg-[#0a0a1f]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="skills" className="relative py-32 md:py-40 bg-[#050510] overflow-hidden">
+      {/* Ambient gradients */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-violet-600/10 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/10 blur-[150px] pointer-events-none" />
+
+      <style>{`
+        .mask-fade {
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+      `}</style>
+
+      <div className="relative">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          className="text-center mb-16 px-6"
+          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase text-violet-400 border border-violet-500/30 bg-violet-500/10 mb-4">
-            Expertise
+          <span className="inline-block px-4 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.3em] uppercase text-violet-400 border border-violet-500/30 bg-violet-500/10 mb-6">
+            Tech Stack
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Technical <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">Skills</span>
+          <h2 className="display text-5xl md:text-7xl font-black leading-[1.05] max-w-4xl mx-auto">
+            Tools I use to
+            <br />
+            <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">build the future.</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((cat, i) => {
-            const c = colorMap[cat.color]
-            return (
+        {/* Featured grid */}
+        <div className="max-w-6xl mx-auto px-6 mb-16">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 md:gap-4">
+            {featured.map((s, i) => (
               <motion.div
-                key={cat.title}
-                className={`rounded-2xl border ${c.card} p-6 hover:scale-[1.02] transition-all duration-300`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                key={s.name}
+                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.04 }}
+                whileHover={{ y: -6, scale: 1.05 }}
+                className={`group relative rounded-2xl border bg-gradient-to-br ${s.color} aspect-square flex flex-col items-center justify-center gap-2 backdrop-blur-sm cursor-pointer overflow-hidden`}
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl ${c.icon}`}>
-                    {cat.icon}
-                  </div>
-                  <h3 className={`font-bold text-base ${c.title}`}>{cat.title}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map(skill => (
-                    <span
-                      key={skill}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-medium border ${c.skill}`}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
+                <div className="relative text-3xl md:text-4xl">{s.icon}</div>
+                <div className="relative text-[10px] md:text-xs font-semibold text-white/90 text-center px-2">{s.name}</div>
               </motion.div>
-            )
-          })}
+            ))}
+          </div>
+        </div>
+
+        {/* Marquees */}
+        <div className="space-y-4">
+          <Marquee items={row1} dur="60s" />
+          <Marquee items={row2} dur="50s" reverse />
+          <Marquee items={row3} dur="65s" />
+          <Marquee items={row4} dur="55s" reverse />
         </div>
       </div>
     </section>

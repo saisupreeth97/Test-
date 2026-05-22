@@ -7,10 +7,16 @@ import Projects from './components/Projects'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import SmoothScroll from './components/SmoothScroll'
+import Cursor from './components/Cursor'
+import ScrollProgress from './components/ScrollProgress'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#050510] text-slate-100 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#050510] text-slate-100 font-sans overflow-x-hidden grain">
+      <SmoothScroll />
+      <Cursor />
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />
