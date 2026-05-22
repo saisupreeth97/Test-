@@ -5,6 +5,7 @@ on:
     branches:
       - claude/3d-website-creation-01VEP
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
