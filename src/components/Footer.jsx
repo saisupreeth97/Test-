@@ -1,17 +1,28 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-[#050510] py-8">
+    <footer className="border-t border-[rgba(240,224,204,0.08)] bg-[#0e0b09] py-8">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xl font-black">
-          <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">SSK</span>
-          <span className="text-violet-400">.</span>
+        <p className="text-[12px] font-bold tracking-[0.4em] uppercase text-cream">
+          SSK
         </p>
-        <p className="text-slate-600 text-sm text-center">
-          © {new Date().getFullYear()} Sai Supreeth Kolaparthy · Built with React, Three.js &amp; Tailwind CSS
+        <p className="text-[rgba(240,224,204,0.3)] text-xs text-center">
+          © {new Date().getFullYear()} Sai Supreeth Kolaparthy · React, Three.js &amp; Tailwind CSS
         </p>
-        <div className="flex gap-4">
-          <a href="mailto:saisupreeth97@gmail.com" className="text-slate-500 hover:text-violet-400 transition-colors text-sm">Email</a>
-          <a href="https://www.linkedin.com/in/sai-supreeth" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-cyan-400 transition-colors text-sm">LinkedIn</a>
+        <div className="flex gap-6">
+          <a
+            href="mailto:saisupreeth97@gmail.com"
+            className="text-[rgba(240,224,204,0.35)] hover:text-cream transition-colors text-xs tracking-wider"
+          >
+            Email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sai-supreeth"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[rgba(240,224,204,0.35)] hover:text-cream transition-colors text-xs tracking-wider"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>

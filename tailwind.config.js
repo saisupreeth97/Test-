@@ -4,16 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: '#7c3aed',
-        'accent-light': '#a855f7',
-        'accent-cyan': '#06b6d4',
-        dark: '#050510',
-        'dark-2': '#0a0a1f',
-        'dark-3': '#0f0f2a',
-        surface: '#141432',
-        'text-muted': '#94a3b8',
+        cream: '#f0e0cc',
+        warm: {
+          DEFAULT: '#0e0b09',
+          2: '#1a1410',
+          3: '#241c17',
+        },
+        orange: {
+          DEFAULT: '#c94f00',
+          light: '#e05a00',
+        },
       },
       fontFamily: {
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {

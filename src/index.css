@@ -4,9 +4,16 @@
 
 html { scroll-behavior: auto; }
 
+:root {
+  --cream: #f0e0cc;
+  --warm: #0e0b09;
+  --orange: #c94f00;
+  --border: rgba(240, 224, 204, 0.1);
+}
+
 html, body {
-  background-color: #050510;
-  color: #e2e8f0;
+  background-color: var(--warm);
+  color: var(--cream);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -21,7 +28,7 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 ::-webkit-scrollbar { display: none; width: 0; }
-::selection { background: rgba(124,58,237,0.4); color: #fff; }
+::selection { background: rgba(201, 79, 0, 0.4); color: #f0e0cc; }
 
 /* Custom cursor — hide native on desktop only */
 @media (hover: hover) and (pointer: fine) {
@@ -29,20 +36,26 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent;
-  }
-  .gradient-text-warm {
-    @apply bg-gradient-to-r from-amber-300 via-rose-400 to-violet-400 bg-clip-text text-transparent;
+  .display {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.02em;
   }
   .glass {
-    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08];
+    background: rgba(240, 224, 204, 0.03);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(240, 224, 204, 0.08);
   }
-  .glow-violet { box-shadow: 0 0 60px rgba(124,58,237,0.25); }
-  .glow-cyan   { box-shadow: 0 0 60px rgba(6,182,212,0.25); }
-  .display {
-    letter-spacing: -0.04em;
-    font-feature-settings: 'ss01', 'cv11';
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-7 py-3.5 text-[11px] font-semibold tracking-[0.18em] uppercase bg-[#c94f00] text-[#f0e0cc] hover:bg-[#e05a00] transition-colors duration-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-3 px-7 py-3.5 text-[11px] font-semibold tracking-[0.18em] uppercase border border-[rgba(240,224,204,0.25)] text-[rgba(240,224,204,0.8)] hover:border-[rgba(240,224,204,0.5)] hover:text-[#f0e0cc] transition-all duration-200;
+  }
+  .section-label {
+    @apply text-[10px] font-semibold tracking-[0.4em] uppercase text-[rgba(240,224,204,0.4)] mb-6 block;
+  }
+  .divider {
+    border-color: rgba(240, 224, 204, 0.1);
   }
 }
 
@@ -63,7 +76,7 @@ html.lenis, html.lenis body { height: auto; }
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
-  opacity: 0.035;
+  opacity: 0.04;
   z-index: 999;
   pointer-events: none;
   mix-blend-mode: overlay;

@@ -29,7 +29,7 @@ function Stars({ count = 5000 }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial color="#a855f7" size={0.12} transparent opacity={0.7} depthWrite={false} sizeAttenuation />
+      <pointsMaterial color="#d4b896" size={0.1} transparent opacity={0.55} depthWrite={false} sizeAttenuation />
     </points>
   )
 }
@@ -58,7 +58,7 @@ function NearStars() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={1200} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial color="#06b6d4" size={0.05} transparent opacity={0.55} depthWrite={false} sizeAttenuation />
+      <pointsMaterial color="#c94f00" size={0.05} transparent opacity={0.4} depthWrite={false} sizeAttenuation />
     </points>
   )
 }
@@ -71,8 +71,8 @@ function LiquidSphere({ mouse }) {
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uColorA: { value: new THREE.Color('#7c3aed') },
-      uColorB: { value: new THREE.Color('#06b6d4') },
+      uColorA: { value: new THREE.Color('#c94f00') },
+      uColorB: { value: new THREE.Color('#7a3000') },
     }),
     []
   )
@@ -119,7 +119,7 @@ function LiquidSphere({ mouse }) {
       float fresnel = pow(1.0 - abs(dot(vNormal, normalize(-vPos))), 2.2);
       vec3 col = mix(uColorA, uColorB, fresnel + vDisplace * 0.4);
       float pulse = 0.6 + 0.4 * sin(uTime * 1.2);
-      gl_FragColor = vec4(col, fresnel * 0.6 * pulse + 0.08);
+      gl_FragColor = vec4(col, fresnel * 0.55 * pulse + 0.06);
     }
   `
 
@@ -173,15 +173,15 @@ function Rings({ mouse }) {
     <group>
       <mesh ref={r1}>
         <torusGeometry args={[6, 0.04, 16, 100]} />
-        <meshBasicMaterial color="#a855f7" transparent opacity={0.5} />
+        <meshBasicMaterial color="#c94f00" transparent opacity={0.4} />
       </mesh>
       <mesh ref={r2}>
         <torusGeometry args={[8, 0.03, 16, 100]} />
-        <meshBasicMaterial color="#06b6d4" transparent opacity={0.4} />
+        <meshBasicMaterial color="#f0e0cc" transparent opacity={0.15} />
       </mesh>
       <mesh ref={r3}>
         <torusGeometry args={[11, 0.02, 16, 100]} />
-        <meshBasicMaterial color="#7c3aed" transparent opacity={0.25} />
+        <meshBasicMaterial color="#e07030" transparent opacity={0.2} />
       </mesh>
     </group>
   )
@@ -198,7 +198,7 @@ function FloatingShapes() {
     rotSpeed: (Math.random() - 0.5) * 0.005,
     type: ['octa', 'tetra', 'icosa', 'dodeca'][i % 4],
     size: 0.4 + Math.random() * 0.6,
-    color: ['#7c3aed', '#06b6d4', '#a855f7'][i % 3],
+    color: ['#c94f00', '#f0e0cc', '#e07030'][i % 3],
     offset: Math.random() * Math.PI * 2,
   })), [])
 
@@ -228,9 +228,9 @@ function FloatingShapes() {
               color={s.color}
               wireframe
               transparent
-              opacity={0.4}
+              opacity={0.3}
               emissive={s.color}
-              emissiveIntensity={0.5}
+              emissiveIntensity={0.4}
             />
           </mesh>
         )
@@ -271,10 +271,10 @@ export default function HeroCanvas() {
       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >
-      <ambientLight intensity={0.3} color="#7c3aed" />
-      <pointLight position={[15, 15, 15]} intensity={2} color="#7c3aed" />
-      <pointLight position={[-15, -10, 10]} intensity={1.5} color="#06b6d4" />
-      <pointLight position={[0, 0, 10]} intensity={1} color="#a855f7" />
+      <ambientLight intensity={0.3} color="#c94f00" />
+      <pointLight position={[15, 15, 15]} intensity={2} color="#c94f00" />
+      <pointLight position={[-15, -10, 10]} intensity={1.5} color="#f0a060" />
+      <pointLight position={[0, 0, 10]} intensity={1} color="#e07030" />
 
       <MouseTracker mouse={mouse} />
       <CameraRig mouse={mouse} />

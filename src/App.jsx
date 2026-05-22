@@ -13,7 +13,7 @@ import ScrollProgress from './components/ScrollProgress'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#050510] text-slate-100 font-sans overflow-x-hidden grain">
+    <div className="min-h-screen bg-warm text-cream font-sans overflow-x-hidden grain">
       <SmoothScroll />
       <Cursor />
       <ScrollProgress />
